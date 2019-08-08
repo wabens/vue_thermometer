@@ -1,17 +1,33 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Temperature
+      :min="-10"
+      :max="110"
+      :cold="30"
+      :hot="90"
+      :temperature="temperature"
+      @change="temperatureChange"
+    /> 
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Temperature from './components/Temperature';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Temperature
+  },
+  data(){
+    return {
+      temperature: 70,
+    }
+  },
+  methods:{
+    temperatureChange(t){
+      this.temperature = t;
+    } 
   }
 }
 </script>
